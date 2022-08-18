@@ -83,24 +83,19 @@ def hr_modeling(features,label):
     from sklearn.naive_bayes import GaussianNB,BernoulliNB
     from sklearn.tree import DecisionTreeClassifier,export_graphviz
     from six import StringIO
-<<<<<<< Updated upstream
-    
-=======
     from sklearn.svm import SVC
     from sklearn.ensemble import RandomForestClassifier    
->>>>>>> Stashed changes
+
     
     models = []
     # models.append(("KNN",KNeighborsClassifier(n_neighbors=3)))
     # models.append(("GussianNB",GaussianNB()))
     # models.append(("BernoulliNB",BernoulliNB()))
-<<<<<<< Updated upstream
-    models.append(("DecisionTree",DecisionTreeClassifier()))
-=======
+    # models.append(("DecisionTree",DecisionTreeClassifier()))
     # models.append(("DecisionTree",DecisionTreeClassifier()))
     # models.append(("SVM Classifier",SVC()))
     models.append(("RandomForest",DecisionTreeClassifier()))
->>>>>>> Stashed changes
+
     
 
     list3 = ["test:","validation:","test:"]
