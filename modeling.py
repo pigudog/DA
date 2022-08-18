@@ -81,13 +81,15 @@ def hr_modeling(features,label):
     from sklearn.naive_bayes import GaussianNB,BernoulliNB
     from sklearn.tree import DecisionTreeClassifier,export_graphviz
     from six import StringIO
+    from sklearn.svm import SVC
     
     
     models = []
     # models.append(("KNN",KNeighborsClassifier(n_neighbors=3)))
     # models.append(("GussianNB",GaussianNB()))
     # models.append(("BernoulliNB",BernoulliNB()))
-    models.append(("DecisionTree",DecisionTreeClassifier()))
+    # models.append(("DecisionTree",DecisionTreeClassifier()))
+    models.append(("SVM Classifier",SVC()))
     
 
     list3 = ["test:","validation:","test:"]
