@@ -85,17 +85,17 @@ def hr_modeling(features,label):
     from six import StringIO
     from sklearn.svm import SVC
     from sklearn.ensemble import RandomForestClassifier    
-
+    from sklearn.ensemble import AdaBoostClassifier
+    
     
     models = []
     # models.append(("KNN",KNeighborsClassifier(n_neighbors=3)))
     # models.append(("GussianNB",GaussianNB()))
     # models.append(("BernoulliNB",BernoulliNB()))
     # models.append(("DecisionTree",DecisionTreeClassifier()))
-    # models.append(("DecisionTree",DecisionTreeClassifier()))
     # models.append(("SVM Classifier",SVC()))
-    models.append(("RandomForest",DecisionTreeClassifier()))
-
+    # models.append(("RandomForest",DecisionTreeClassifier()))
+    models.append(("Adaboost",AdaBoostClassifier()))
     
 
     list3 = ["test:","validation:","test:"]
