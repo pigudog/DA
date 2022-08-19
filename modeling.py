@@ -85,7 +85,8 @@ def hr_modeling(features,label):
     from sklearn.tree import DecisionTreeClassifier,export_graphviz
     from six import StringIO
     from sklearn.svm import SVC
-    
+    from sklearn.ensemble import RandomForestClassifier    
+    from sklearn.ensemble import AdaBoostClassifier 
     
     models = []
     # models.append(("KNN",KNeighborsClassifier(n_neighbors=3)))
@@ -93,6 +94,9 @@ def hr_modeling(features,label):
     # models.append(("BernoulliNB",BernoulliNB()))
     # models.append(("DecisionTree",DecisionTreeClassifier()))
     models.append(("SVM Classifier",SVC()))
+    # models.append(("SVM Classifier",SVC()))
+    # models.append(("RandomForest",DecisionTreeClassifier()))
+    models.append(("Adaboost",AdaBoostClassifier()))
     
 
     list3 = ["test:","validation:","test:"]
