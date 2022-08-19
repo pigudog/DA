@@ -93,7 +93,7 @@ def hr_modeling(features,label):
     # models.append(("GussianNB",GaussianNB()))
     # models.append(("BernoulliNB",BernoulliNB()))
     # models.append(("DecisionTree",DecisionTreeClassifier()))
-    models.append(("SVM Classifier",SVC()))
+    # models.append(("SVM Classifier",SVC()))
     # models.append(("SVM Classifier",SVC()))
     # models.append(("RandomForest",DecisionTreeClassifier()))
     models.append(("Adaboost",AdaBoostClassifier()))
