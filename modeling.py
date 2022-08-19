@@ -1,4 +1,5 @@
 from ast import main
+from pyexpat import model
 # from selectors import EpollSelector
 from tkinter.tix import MAIN
 from xmlrpc.server import SimpleXMLRPCDispatcher
@@ -87,6 +88,33 @@ def hr_modeling(features,label):
     from sklearn.svm import SVC
     from sklearn.ensemble import RandomForestClassifier    
     from sklearn.ensemble import AdaBoostClassifier 
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import GradientBoostingClassifier
+    
+    # from keras.models import Sequential
+    # from keras.layers.core import Dense,Activation
+    # from keras.optimizers import SGD
+    
+    ## Artificial Neural Network
+    # mdl = Sequential()
+    # mdl.add(Dense(50,input_dim=len(f_v[0])))
+    # mdl.add(Activation("sigmoid"))
+    # mdl.add(Dense(2))
+    # mdl.add(Activation("softmax"))
+    # sgd = SGD(lr=0.01)
+    # mdl.compile(loss="mean_squared_error",optimizer=sgd)
+    # mdl.fit(X_train,np.array([[0,1] if i==1 else [1,0] for i in Y_train]),epochs=10,batch_size=2048)
+    # xy_lst = [(X_train,Y_train),(X_validation,Y_validation),(X_test,Y_test)]
+    # for i in range(len(xy_lst)):
+    #     X_part = xy_lst[i][0]
+    #     Y_part = xy_lst[i][1]
+    #     predict_y = mdl.predict(X_part)
+    #     classes_y=np.argmax(predict_y,axis=1)
+    #     Y_pred = classes_y
+    #     print(i)
+    #     print("nn","-ACC",accuracy_score(Y_part,Y_pred))
+    #     print("nn","-REC",recall_score(Y_part,Y_pred))
+    #     print("nn","-F1",f1_score(Y_part,Y_pred))
     
     models = []
     # models.append(("KNN",KNeighborsClassifier(n_neighbors=3)))
@@ -96,8 +124,9 @@ def hr_modeling(features,label):
     # models.append(("SVM Classifier",SVC()))
     # models.append(("SVM Classifier",SVC()))
     # models.append(("RandomForest",DecisionTreeClassifier()))
-    models.append(("Adaboost",AdaBoostClassifier()))
-    
+    # models.append(("Adaboost",AdaBoostClassifier()))
+    # models.append(("LogisticRegression",LogisticRegression()))
+    models.append(("GBDT",GradientBoostingClassifier(max_depth=6,n_estimators=100)))
 
     list3 = ["test:","validation:","test:"]
     for clf_name,clf in models:
@@ -121,10 +150,24 @@ def hr_modeling(features,label):
                 graph = pydotplus.graph_from_dot_data(dot_data)
                 graph.write_pdf("dt_tree.pdf")  
     
-
+def regr_test(features,label):
+    print("X",features)
+    print("Y",label)
+    from sklearn.linear_model import LinearRegression,Ridge,Lasso
+    # regr = LinearRegression()
+    # regr = Ridge(alpha=1)
+    regr = Lasso(alpha=0.001)
+    regr.fit(features.values,label.values)
+    Y_pred = regr.predict(features.values)
+    print("Coef",regr.coef_)
+    from sklearn.metrics import mean_squared_error
+    print("MSE:",mean_squared_error(Y_pred,label.values))
+    
+    
 
 def main():
     features,label = hr_preprocessing()
+    # regr_test(features[["number_project","average_montly_hours"]],features["last_evaluation"])
     hr_modeling(features,label)
 
 if __name__ == "__main__":
